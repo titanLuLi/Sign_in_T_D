@@ -1,0 +1,101 @@
+page {
+  background: #f6f6f6;
+  padding: 10px;
+  width: 95%;
+}
+
+.userinfo {
+  margin-top: 40rpx;
+  height: 180rpx;
+  width: 100%;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-left: none;
+  border-right: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  transition: all 300ms ease; 
+}
+
+.userinfo-avatar {
+  width: 150rpx;
+  height: 150rpx;
+  margin: 20rpx;
+  padding: 15px;
+  border-radius: 50%;
+  background-size: cover;
+  background-color: white;
+  border : 3px solid lightgray;
+  text-align: center;
+}
+
+.userinfo-avatar:after {
+  border: none;
+}
+
+.red{
+  color: red;
+}
+
+.title {
+  font-size: 50rpx;
+  color: black;
+  text-align: center;
+}
+
+.space {
+  margin-top: 5px;
+}
+
+.subcontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  font-size: 40rpx;
+}
+
+.left {
+  padding-top: 5px;
+  padding-left: 7px;
+  color: black;
+  width: 25%;
+  text-align: left;
+}
+
+.leftRed{
+  padding-top: 5px;
+  padding-left: 7px;
+  color: red;
+  width: 25%;
+  text-align: left;
+}
+
+.right {
+  
+  width: 75%;
+  font-size: 35rpx;
+}
+
+input {
+  border: 2px solid darkgray;
+  padding: 5px;
+}
+
+.button {
+  width: 42%;
+  border : 2px solid cadetblue;
+  padding: 10px;
+  margin-top: 50rpx;
+  border-radius: 20%;
+}
+
+
+.scanbutton {
+  width: 74%;
+  border-radius: 10%;
+  background-size: cover;
+  border : 2px solid cadetblue;
+}

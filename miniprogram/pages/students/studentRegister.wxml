@@ -1,0 +1,24 @@
+  <view class="userinfo">
+   <button class="userinfo-avatar">注册</button>
+  </view>
+
+  <view class="subcontainer">
+    <view class="leftRed">学生 ID </view>
+    <button type="default" class='right scanbutton' bindtap='bindScanId'>从家长ID生成器扫码</button>
+  </view>
+  <view class="subcontainer space">
+    <text class="left">名字</text>
+    <text class="right">{{ name }}</text>
+  </view>
+  <view class="subcontainer">
+    <text class="leftRed">P1名字</text>
+    <input bindinput="bindKeyInputP1" class='right border' placeholder="家长1名字" value='{{p1name}}' />
+  </view>
+  <view class="subcontainer">
+    <text class="left">P2名字</text>
+    <input bindinput="bindKeyInputP2" class='right border' placeholder="家长1名字" />
+  </view>
+  <view class='subcontainer'>
+    <button type="primary" class='button' bindtap='confirmOnClick'>确认</button>
+    <button class='button'>取消</button>
+  </view>

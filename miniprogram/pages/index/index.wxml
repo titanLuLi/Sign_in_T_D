@@ -4,9 +4,8 @@
   <!-- 用户 openid -->
   <view class="userinfo">
     <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" style="background-image: url({{avatarUrl}})"></button>
-
   </view>
-  <view class="usermotto">
+  <view class="">
     <button class='button' bindtap="signInOnClick">签到</button>
     <button  class='button' >查看出席状态</button>
     <button  class='button' bindtap="studentsOnClick">注册</button>
