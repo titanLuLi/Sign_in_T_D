@@ -1,7 +1,9 @@
-var version = 'version1';
+
 var fun_base64 = require('../../utils/base64.js');
 var util = require('../../utils/util.js');
 var obj_base64 = new fun_base64.Base64();
+const db = wx.cloud.database();
+
 Page({
   data: {
     id: '',
@@ -9,12 +11,53 @@ Page({
     birth: '',
     p1name: '',
     p2name: '',
-    createdDate : '',
-    registeredDate: ''
+    disabled: true
   },
-
+  insertSave(that) {
+    db.collection('Students').where({
+      id: that.data.id
+    }).count({
+      success(res) {
+        console.log(res.total);
+        if (res.total == 0) {
+          db.collection('Students').add({
+            data: {
+              id: that.data.id,
+              name: that.data.name,
+              birth: that.data.birth,
+              p1name: that.data.p1name,
+              p2name: that.data.p2name,
+              createdDate: util.formatTime(new Date()),
+              registeredDate: util.formatDate(new Date())
+            }
+          }).then(res => {
+            console.log(res);
+            var message = res.errMsg.split(':');
+            wx.showModal({
+              title: '提示',
+              content: message
+            })
+          })
+        } else {
+          wx.showModal({
+            title: '提示',
+            content: '注册成功'
+          })
+        }
+      }
+    });
+  },
+  cancelOnClick() {
+    this.setData({
+      id: '',
+      name: '',
+      birth: '',
+      p1name: '',
+      p2name: '',
+      disabled: true
+    })
+  },
   confirmOnClick() {
-    var validation = true;
     if (this.data.id == '' || this.data.p1name == '') {
       wx.showModal({
         title: '提示',
@@ -23,35 +66,42 @@ Page({
           console.log('用户点击')
         }
       })
-      console.log(this.data);
-      validation = false;
-    }
-    if (true) {
+    } else {
       var Lmessage = '小朋友 名: ' + this.data.name + ' 家长1: ' + this.data.p1name +
-        ' 家长2: ' + this.data.p2name + ' 确定要添加吗？';
-      console.log('data before save : ' + this.data.id + ' createdDate: ' + this.data.createdDate + ' registeredDate: '+ this.data.registeredDate);
-
+        ' 家长2: ' + this.data.p2name;
+      console.log('data before save : ' + Lmessage);
+      let thatL1 = this;
       wx.showModal({
-        title: '提示',
+        title: '确定要添加吗？',
         content: Lmessage,
         success: function(sm) {
           if (sm.confirm) {
-            console.log('用户点击Save')
+            wx.showToast({
+              title: '保存中...',
+              icon: 'loading',
+              mask: true,
+              duration: 2000
+            });
+            let that = thatL1;
+            that.insertSave(that);
           } else if (sm.cancel) {
             console.log('用户点击取消')
           }
         }
-      })      
+      });
     }
+    this.setData({
+      disabled: true,
+    })
   },
   bindKeyInputP1(e) {
     this.setData({
-      p1name: e.detail.value
+      p1name: e.detail.value  
     })
   },
   bindKeyInputP2(e) {
     this.setData({
-      p2name: e.detail.value
+      p2name: e.detail.value  
     })
   },
   bindScanId: function() {
@@ -74,23 +124,18 @@ Page({
           name: vals[0],
           birth: vals[1],
           p1name: vals[2],
-          createdDate: new Date(),
-          registeredDate: new Date()
+          disabled: false
         })
       }
     })
-    var st = setTimeout(function () {
-      wx.hideToast();
-      clearTimeout(st);
-    }, 5000)
+    /* var st = setTimeout(function() {
+       wx.hideToast();
+       clearTimeout(st);
+     }, 5000)*/
   },
 
   onLoad: function(options) {},
-
-  onReady: function() {
-    console.log("onReady: "+this.data);
-  },
-
+  onReady: function() {},
   onShow: function() {},
   onHide: function() {},
   onUnload: function() {},
@@ -98,7 +143,3 @@ Page({
   onReachBottom: function() {},
   onShareAppMessage: function() {}
 });
-
-function sendFunction(data) {
-  console.log('Sned')
-};

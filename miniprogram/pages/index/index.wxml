@@ -6,9 +6,9 @@
     <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" style="background-image: url({{avatarUrl}})"></button>
   </view>
   <view class="">
-    <button class='button' bindtap="signInOnClick">签到</button>
-    <button  class='button' >查看出席状态</button>
-    <button  class='button' bindtap="studentsOnClick">注册</button>
-    <button  class='button'>查看付费</button>
+    <button type='primary' class='button' bindtap="signInOnClick">签到</button>
+    <button type='primary' class='button' bindtap='classOnClick' >查看出席状态</button>
+    <button type='primary' class='button' bindtap="studentsOnClick">注册</button>
+    <button type='default' class='button' bindtap='checkPayOnClick'>查看付费</button>
   </view>
 </view>

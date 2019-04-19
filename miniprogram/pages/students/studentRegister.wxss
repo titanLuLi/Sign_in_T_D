@@ -15,7 +15,7 @@ page {
   display: flex;
   flex-direction: row;
   align-items: center;
-  transition: all 300ms ease; 
+  transition: all 300ms ease;
 }
 
 .userinfo-avatar {
@@ -26,7 +26,7 @@ page {
   border-radius: 50%;
   background-size: cover;
   background-color: white;
-  border : 3px solid lightgray;
+  border: 3px solid lightgray;
   text-align: center;
 }
 
@@ -34,7 +34,7 @@ page {
   border: none;
 }
 
-.red{
+.red {
   color: red;
 }
 
@@ -65,7 +65,7 @@ page {
   text-align: left;
 }
 
-.leftRed{
+.leftRed {
   padding-top: 5px;
   padding-left: 7px;
   color: red;
@@ -74,7 +74,6 @@ page {
 }
 
 .right {
-  
   width: 75%;
   font-size: 35rpx;
 }
@@ -86,16 +85,15 @@ input {
 
 .button {
   width: 42%;
-  border : 2px solid cadetblue;
+  border: 2px solid cadetblue;
   padding: 10px;
   margin-top: 50rpx;
-  border-radius: 20%;
+  border-radius: 7%;
 }
-
 
 .scanbutton {
   width: 74%;
-  border-radius: 10%;
+  border-radius: 7%;
   background-size: cover;
-  border : 2px solid cadetblue;
+  border: 2px solid cadetblue;
 }

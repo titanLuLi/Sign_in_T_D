@@ -6,9 +6,20 @@ function formatTime(date) {
   var hour = date.getHours()
   var minute = date.getMinutes()
   var second = date.getSeconds()
+  return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+}
 
+function removeDate(date) {
+  var vals = date.split(' ');
+  return vals[1];
+}
 
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+function formatDate(date) {
+  var year = date.getFullYear()
+  var month = date.getMonth() + 1
+  var day = date.getDate()
+
+  return [year, month, day].map(formatNumber).join('-');
 }
 
 function formatNumber(n) {
@@ -30,5 +41,7 @@ function hashCode(s) {
 module.exports = {
   formatTime: formatTime,
   toThousands: toThousands,
-  hashCode: hashCode
+  hashCode: hashCode,
+  formatDate: formatDate,
+  removeDate: removeDate
 }

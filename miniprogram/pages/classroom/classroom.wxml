@@ -1,0 +1,26 @@
+<!--miniprogram/pages/classroom/classroom.wxml-->
+
+<view class="userinfo">
+  <view class="userinfo-avatar">出席状态</view>
+</view>
+
+<view class="subcontainer">
+  <picker class="row2_1" bindchange="bindPickerChange" value="{{index}}" range="{{selectorData}}">
+    <view class="picker">
+      请先选择日期：{{selectorData[index]}}
+    </view>
+  </picker>
+  <button class='row2_2' type='primary' bindtap='searchOnClick' disabled="{{disabled}}">搜索</button>
+</view>
+<view class="resultcontainer">
+  <view class = 'row3_1'>学生</view>
+  <view class = 'row3_2' >家长</view>
+  <view class = 'row3_3'>时间</view>
+</view>
+<view wx:for='{{ showData }}' wx:for-item="item">
+  <view class="resultcontainer">
+    <view class = 'row3_1'> {{ item.name}} </view>
+    <view class = 'row3_2'> {{ item.signedPname}} </view>
+    <view class = 'row3_3'> {{ item.createdDate}}</view>
+  </view>
+</view>

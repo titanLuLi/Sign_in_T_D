@@ -1,24 +1,25 @@
   <view class="userinfo">
    <button class="userinfo-avatar">注册</button>
+   
   </view>
 
   <view class="subcontainer">
-    <view class="leftRed">学生 ID </view>
-    <button type="default" class='right scanbutton' bindtap='bindScanId'>从家长ID生成器扫码</button>
-  </view>
-  <view class="subcontainer space">
-    <text class="left">名字</text>
+    <text class="left">姓名</text>
     <text class="right">{{ name }}</text>
   </view>
-  <view class="subcontainer">
-    <text class="leftRed">P1名字</text>
-    <input bindinput="bindKeyInputP1" class='right border' placeholder="家长1名字" value='{{p1name}}' />
+  <view class="subcontainer space">
+   <view class="left">学生 ID </view>
+    <button type="primary" class='right scanbutton' bindtap='bindScanId'>扫码</button>
   </view>
   <view class="subcontainer">
-    <text class="left">P2名字</text>
-    <input bindinput="bindKeyInputP2" class='right border' placeholder="家长1名字" />
+    <text class="leftRed">家长1</text>
+    <input bindinput="bindKeyInputP1" class='right border' placeholder="家长1姓名" value='{{p1name}}' />
+  </view>
+  <view class="subcontainer">
+    <text class="left">家长2</text>
+    <input bindinput="bindKeyInputP2" class='right border' placeholder="家长2姓名" value='{{p2name}}' />
   </view>
   <view class='subcontainer'>
-    <button type="primary" class='button' bindtap='confirmOnClick'>确认</button>
-    <button class='button'>取消</button>
+    <button type="primary" disabled="{{disabled}}" class='button' bindtap='confirmOnClick'>确认</button>
+    <button class='button' bindtap='cancelOnClick' >取消</button>
   </view>
